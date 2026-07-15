@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SmartRealEstate.Api/SmartRealEstate.Api.csproj" />
+  <Project Path="SmartRealEstate.Core/SmartRealEstate.Core.csproj" />
+  <Project Path="SmartRealEstate.Infrastructure/SmartRealEstate.Infrastructure.csproj" />
+</Solution>
