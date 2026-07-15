@@ -1,4 +1,4 @@
-const API_BASE_URL = ''; // Proxied via Vite config to http://localhost:5265
+const API_BASE_URL = import.meta.env.VITE_API_URL || ''; // In prod, set VITE_API_URL to Railway backend URL
 
 // LocalStorage helpers
 export const getAuthToken = () => localStorage.getItem('access_token');

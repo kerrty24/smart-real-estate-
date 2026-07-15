@@ -91,7 +91,18 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173", "http://127.0.0.1:5173")
+            var allowedOrigins = new List<string>
+            {
+                "http://localhost:5173",
+                "http://127.0.0.1:5173"
+            };
+
+            // Allow any custom frontend URL set via env var (e.g. Vercel URL)
+            var frontendUrl = builder.Configuration["FRONTEND_URL"];
+            if (!string.IsNullOrEmpty(frontendUrl))
+                allowedOrigins.Add(frontendUrl);
+
+            policy.WithOrigins(allowedOrigins.ToArray())
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials();
